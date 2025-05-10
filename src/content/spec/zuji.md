@@ -8,4 +8,4 @@
 还没写完呢🫥😱
 :::
 <!-- more -->
-<iframe src="http://localhost:4321/html/zuji/index.html" width="100%" height="600px" style="border: none;"></iframe>
+<iframe src="https://kekesxk.online/html/zuji/index.html" width="100%" height="600px" style="border: none;"></iframe>

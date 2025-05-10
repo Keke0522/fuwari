@@ -3,7 +3,7 @@
 坐标：上海。  
 白天是🐮🐴，晚上是自己
 ##
-<iframe src="http://localhost:4321/html/djs/djs.html" width="100%" height="250px" style="border: none;"></iframe>
+<iframe src="https://kekesxk.online/html/djs/djs.html" width="100%" height="250px" style="border: none;"></iframe>
 
 ## 我擅长的：
 。。。一切好玩的点子都想尝试
