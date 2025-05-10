@@ -69,28 +69,28 @@ const tools = [
   {
     name: '前端笔记',
     description: '前端日常，随手记...',
-    image: 'http://kekesxk.online/static/img/1396a2291e98754084d259d6e06657c9.iShot_2025-01-09_14.14.10.webp',
+    image: 'http://124.222.48.45/static/img/1396a2291e98754084d259d6e06657c9.iShot_2025-01-09_14.14.10.webp',
     tags: ['前端', '笔记'],
     url: 'https://keke0420.yuque.com/hyo9om/md9yhx'
   },
   {
     name: 'java笔记',
     description: 'java笔记...',
-    image: 'http://kekesxk.online/static/img/1396a2291e98754084d259d6e06657c9.iShot_2025-01-09_14.14.10.webp',
+    image: 'http://124.222.48.45/static/img/1396a2291e98754084d259d6e06657c9.iShot_2025-01-09_14.14.10.webp',
     tags: ['java', '笔记'],
     url: 'https://mrjokersince1997.github.io/My-Notes/#/?id=java-se'
   },
   {
     name: '今天吃什么',
     description: '吃点什么好呢🤔',
-    image: 'http://kekesxk.online/static/img/1396a2291e98754084d259d6e06657c9.iShot_2025-01-09_14.14.10.webp',
+    image: 'http://124.222.48.45/static/img/1396a2291e98754084d259d6e06657c9.iShot_2025-01-09_14.14.10.webp',
     tags: ['生活'],
      url: '/html/chi/index.html'
   },
   {
     name: '******',
     description: '还没想好...',
-    image: 'http://kekesxk.online/static/img/1396a2291e98754084d259d6e06657c9.iShot_2025-01-09_14.14.10.webp',
+    image: 'http://124.222.48.45/static/img/1396a2291e98754084d259d6e06657c9.iShot_2025-01-09_14.14.10.webp',
     tags: ['vue']
   }
 ];
