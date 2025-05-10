@@ -99,6 +99,6 @@ export const licenseConfig: LicenseConfig = {
 };
 export const commentConfig: CommentConfig = {
 	twikoo: {
-		envId: 'http://124.222.48.45:6777',
+		envId: 'https://124.222.48.45:6776',
 	},
 }
