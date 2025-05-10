@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.default.css" />
+    <!-- 引入 Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- 引入 Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <style>
+        #map {
+            height: 130vh;
+            width: 130%;
+        }
+        .custom-cluster-icon {
+            border: 2px solid #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+<script>
+    const map = L.map('map', {
+        zoomControl: false // ✨ 关闭左上角的加减号按钮
+    }).setView([31.2304, 121.4737], 5); // 设置默认中心点和缩放等级
+    const chinaBounds = L.latLngBounds([22.0, 90.0], [48.0, 120.0]);
+    map.fitBounds(chinaBounds);
+
+    // 添加天地图图层
+    L.tileLayer('https://t{s}.tianditu.gov.cn/vec_w/wmts?tk=0cd4c9f45e435f078847140a7728f8ab&service=wmts&request=GetTile&version=1.0.0&layer=vec&style=default&tilematrixSet=w&format=tiles&tilematrix={z}&tilecol={x}&tilerow={y}', {
+        subdomains: ['0', '1', '2', '3', '4', '5', '6', '7'],
+        attribution: '© 天地图',
+        opacity: 0.3,
+    }).addTo(map);
+
+    // 加载省级边界数据
+    fetch('http://kekesxk.online/c/zuji/full.json') // 请确保这个路径可以正确加载省级边界数据
+        .then(res => res.json())
+        .then(data => {
+            L.geoJSON(data, {
+                style: {
+                    color: 'rgba(255,182,153,0.4)',
+                    weight: 0.8,
+                    fillColor: 'rgba(255,235,204,0.4)',
+                    fillOpacity: 0.2,
+                },
+                onEachFeature: onEachFeature
+            }).addTo(map);
+        });
+
+    // 添加标注图层
+    L.tileLayer('https://t{s}.tianditu.gov.cn/cva_w/wmts?tk=0cd4c9f45e435f078847140a7728f8ab&service=wmts&request=GetTile&version=1.0.0&layer=cva&style=default&tilematrixSet=w&format=tiles&tilematrix={z}&tilecol={x}&tilerow={y}', {
+        subdomains: ['0', '1', '2', '3', '4', '5', '6', '7'],
+        minZoom: 5,
+        maxZoom: 15,
+        opacity: 0.5,
+    }).addTo(map);
+
+    // 创建一个 MarkerClusterGroup 用于聚集标记
+    const markerClusterGroup = L.markerClusterGroup({
+        maxClusterRadius: 40,
+        iconCreateFunction: function (cluster) {
+            const markers = cluster.getAllChildMarkers();
+            const count = markers.length;
+            return new L.DivIcon({
+                html: `<img src="https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/image.svg?imagevanblog" style="width: 20px" />`,
+                className: 'custom-cluster-icon',
+                iconSize: new L.Point(30, 30)
+            });
+        }
+    });
+
+    const footprints = [
+        {
+            "latlng": {
+                "lat": 30.243562  ,
+                "lng":120.183013
+            },
+            "note": ["好玩爱玩"],
+            "time": "2025/4/12",
+            "region": ["浙江"],
+            "images": [
+                "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744388480638_Live_20250406013257013.jpeg",
+            ],
+            "info":[
+                {"latlng": {
+                        "lat": 30.75615,
+                        "lng": 120.74955833333334
+                    },
+                    "note": ["好玩爱玩","xixix","hahhah","gogog","lallala","gogog"],
+                    "time": "2025/4/12",
+                    "region": ["南湖景区","西塘古镇","西塘古镇","少年路","月河古街","月河古街"],
+                    "images": [
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744388480638_Live_20250406013257013.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744389129002_IMG_0836.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744389186282_IMG_2868.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744389207733_IMG_1013.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744388519053_IMG_0994.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744389168684_IMG_0985.jpeg"
+                    ]},
+            ]
+        },
+        {
+            "latlng": {
+                "lat": 32.06552222222222,
+                "lng": 118.7902611111111
+            },
+            "note": ["好玩爱玩"],
+            "time": "2025/4/12",
+            "region": ["江苏"],
+            "images": [
+                "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430344049_IMG_6377.jpeg",
+            ],
+            "info":[
+                {
+                    "latlng": {
+                        "lat": 32.06552222222222,
+                        "lng": 118.7902611111111
+                    },
+                    "note": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                    "time": "2025/4/12 ",
+                    "region": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                    "images": [
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430344049_IMG_6377.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430359849_IMG_6378.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430375266_IMG_6382.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430325815_IMG_6368.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430319100_IMG_6366.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430313433_IMG_6337.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430298032_IMG_6273.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430284215_IMG_6065.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430275180_IMG_6056.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430268699_IMG_6054.jpeg",
+                        "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/2025-04-12/1744430259982_IMG_6039.jpeg",
+                    ]
+                },
+            ]
+        },
+    ];
+
+    // 确保足迹数据加载完成后再渲染
+    setTimeout(() => {
+        addFootprintsToMap(footprints);
+    }, 1000);
+
+    // 渲染足迹并添加到 MarkerClusterGroup
+    function addFootprintsToMap(footprints) {
+        footprints.forEach(footprint => {
+            const marker = L.marker(footprint.latlng, {
+                icon: L.divIcon({
+                    className: 'custom-footprint-icon',
+                    html: '<img src="https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/image.svg?imagevanblog" style="width: 20px" />',
+                    iconSize: [30, 30],
+                })
+            });
+
+            let imageHtml = '';
+            footprint.images.forEach(image => {
+                imageHtml += `<img src="${image}" style="max-width: 80vh; margin-bottom: 5px;">`;
+            });
+
+            marker.on('mouseover', () => {
+                let imageHtml = `
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+    `;
+
+                // 循环遍历每张图片，生成轮播图的每个 slide
+                // 循环遍历每张图片，生成轮播图的每个 slide
+                footprint.images.forEach((image, index) => {
+                    imageHtml += `
+    <div class="swiper-slide">
+      <!-- 图片上方的文本 -->
+      <div class="image-info">
+            🌍 ${footprint.region[index]}
+      </div>
+      <img src="${image}" class="swiper-image"/>
+      <!-- 图片左下角的文本 -->
+      <div class="image-overlay">
+       📝 ${footprint.note[index]}<br>
+       <b>🕒 ${footprint.time}</b><br>
+
+
+      </div>
+    </div>
+  `;
+                });
+
+                // 完成 Swiper 的 HTML 结构
+                imageHtml += `
+          </div>
+          <!-- 分页器 -->
+          <div class="swiper-pagination"></div>
+          <!-- 前后导航按钮 -->
+
+        </div>
+    `;
+
+                // 创建弹出框内容
+                popup = marker.bindPopup(`
+
+        ${imageHtml}
+      `, {
+                    maxWidth: 800,
+                    closeOnClick: false,
+                    autoPan: false
+                }).openPopup();
+
+                // 初始化 Swiper 轮播图
+                new Swiper('.swiper-container', {
+                    loop: true, // 是否循环
+                    autoplay: {
+                        delay: 3000, // 自动切换时间间隔
+                    },
+                    pagination: {
+                        el: '.swiper-pagination', // 分页器
+                        clickable: true, // 可以点击
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next', // 下一张按钮
+                        prevEl: '.swiper-button-prev', // 上一张按钮
+                    },
+                    slidesPerView: 1, // 每次展示1张图片
+                    spaceBetween: 10, // 每张图片之间的间距
+                    centeredSlides: true, // 图片居中
+                });
+            });
+
+            marker.on('mouseout', () => {
+                // 如果鼠标移开且没有移动到popup上，则关闭popup
+                if (!popup._map) {
+                    marker.closePopup();
+                }
+            });
+            markerClusterGroup.addLayer(marker);
+        });
+    }
+    map.addLayer(markerClusterGroup);
+
+    // 添加点击事件处理器
+    // 在点击省份时进行足迹匹配
+    function onEachFeature(feature, layer) {
+        layer.on('click', function() {
+            const bounds = layer.getBounds(); // 获取省级的边界
+// 判断是否有足迹落在这个省份的边界内
+            const provinceFootprintss = footprints.filter(fp => {
+                const latlng = L.latLng(fp.latlng.lat, fp.latlng.lng);
+                return bounds.contains(latlng);
+            });
+
+            if (provinceFootprintss.length === 0) {
+                alert("该省没有足迹数据！");
+                return; // 没有数据就不继续创建地图了
+            }
+            // 创建自定义的div容器来显示地图
+            const provinceMapDiv = document.createElement('div');
+            provinceMapDiv.id = 'provinceMap';
+            provinceMapDiv.style.position = 'absolute';
+            provinceMapDiv.style.top = '50%';
+            provinceMapDiv.style.left = '50%';
+            provinceMapDiv.style.transform = 'translate(-50%, -50%)';
+            provinceMapDiv.style.width = '99vw';  // 设置宽度
+            provinceMapDiv.style.height = '99vh'; // 设置高度
+            provinceMapDiv.style.borderRadius = '10px'; // 去掉尖角
+            provinceMapDiv.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)'; // 添加阴影效果
+            provinceMapDiv.style.zIndex = '9999'; // 确保显示在页面上方
+            provinceMapDiv.style.backgroundColor = 'white'; // 设置背景颜色，确保地图可见
+
+            // 将div添加到页面上
+            document.body.appendChild(provinceMapDiv);
+
+            // 初始化新地图
+            const provinceMap = L.map(provinceMapDiv, {
+                center: bounds.getCenter(),
+                zoom: 7,
+                scrollWheelZoom: false,
+                zoomControl: false
+            });
+// 添加该省份边界
+            L.geoJSON(feature).addTo(provinceMap);
+            L.tileLayer('https://t{s}.tianditu.gov.cn/vec_w/wmts?tk=0cd4c9f45e435f078847140a7728f8ab&service=wmts&request=GetTile&version=1.0.0&layer=vec&style=default&tilematrixSet=w&format=tiles&tilematrix={z}&tilecol={x}&tilerow={y}', {
+                subdomains: ['0', '1', '2', '3', '4', '5', '6', '7'],
+                attribution: '© 天地图',
+                opacity: 0.3
+            }).addTo(provinceMap);
+            //添加标注层
+            L.tileLayer('https://t{s}.tianditu.gov.cn/cva_w/wmts?tk=0cd4c9f45e435f078847140a7728f8ab&service=wmts&request=GetTile&version=1.0.0&layer=cva&style=default&tilematrixSet=w&format=tiles&tilematrix={z}&tilecol={x}&tilerow={y}', {
+                subdomains: ['0', '1', '2', '3', '4', '5', '6', '7'],
+                minZoom: 5,
+                maxZoom: 15,
+                opacity: 0.3,
+            }).addTo(map);
+
+
+            const provinceFootprints = [];
+            footprints.forEach(footprint => {
+                // 使用经纬度判断足迹是否在当前省份的边界内
+                const latlng = L.latLng(footprint.latlng.lat, footprint.latlng.lng);
+                if (bounds.contains(latlng)) {  // 如果足迹经纬度在省份边界内
+                    if (footprint.info && Array.isArray(footprint.info)) {
+                        // 将符合条件的所有info数据添加到provinceFootprints
+                        provinceFootprints.push(...footprint.info);
+                    }
+                }
+            });
+
+// 如果有足迹数据，渲染并添加到省级地图
+            if (provinceFootprints.length > 0) {
+                console.log('provinceFootprints', provinceFootprints);
+                provinceFootprints.forEach(footprint => {
+                    const marker = L.marker(footprint.latlng, {
+                        icon: L.divIcon({
+                            className: 'custom-footprint-icon',
+                            html: '<img src="https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/image.svg?imagevanblog" style="width: 20px" />',
+                            iconSize: [30, 30],
+                        })
+                    });
+
+                    let imageHtml = '';
+                    footprint.images.forEach(image => {
+                        imageHtml += `<img src="${image}" style="max-width: 80vh; margin-bottom: 5px;">`;
+                    });
+
+                    marker.on('mouseover', () => {
+                        let imageHtml = `
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+    `;
+
+                        // 循环遍历每张图片，生成轮播图的每个 slide
+                        footprint.images.forEach((image, index) => {
+                            imageHtml += `
+    <div class="swiper-slide">
+      <!-- 图片上方的文本 -->
+      <div class="image-info">
+            🌍 ${footprint.region[index]}
+      </div>
+      <img src="${image}" class="swiper-image"/>
+      <!-- 图片左下角的文本 -->
+      <div class="image-overlay">
+        📝 ${footprint.note[index]}<br>
+       <b>🕒 ${footprint.time}</b><br>
+
+
+      </div>
+    </div>
+  `;
+                        });
+
+                        // 完成 Swiper 的 HTML 结构
+                        imageHtml += `
+          </div>
+          <!-- 分页器 -->
+          <div class="swiper-pagination"></div>
+          <!-- 前后导航按钮 -->
+
+        </div>
+    `;
+
+                        // 创建弹出框内容
+                        popup = marker.bindPopup(`
+
+        ${imageHtml}
+      `, {
+                            maxWidth: 800,
+                            closeOnClick: false,
+                            autoPan: false
+                        }).openPopup();
+
+                        // 初始化 Swiper 轮播图
+                        new Swiper('.swiper-container', {
+                            loop: true, // 是否循环
+                            autoplay: {
+                                delay: 3000, // 自动切换时间间隔
+                            },
+                            pagination: {
+                                el: '.swiper-pagination', // 分页器
+                                clickable: true, // 可以点击
+                            },
+                            navigation: {
+                                nextEl: '.swiper-button-next', // 下一张按钮
+                                prevEl: '.swiper-button-prev', // 上一张按钮
+                            },
+                            slidesPerView: 1, // 每次展示1张图片
+                            spaceBetween: 10, // 每张图片之间的间距
+                            centeredSlides: true, // 图片居中
+                        });
+                    });
+
+                    marker.on('mouseout', () => {
+                        // 如果鼠标移开且没有移动到popup上，则关闭popup
+                        if (!popup._map) {
+                            marker.closePopup();
+                        }
+                    });
+                    provinceMap.addLayer(marker);  // 将足迹标记添加到省级地图
+                });
+            } else {
+                alert("该省没有足迹数据！");
+                return;
+            }
+            // 添加关闭按钮到页面，点击时删除div
+            const closeButton = document.createElement('button');
+            closeButton.innerHTML = '<span style="font-size: 20px; color: #fff;">&#10005;</span>';  // 使用叉子符号
+            closeButton.style.position = 'absolute';
+            closeButton.style.top = '10px';
+            closeButton.style.right = '10px';
+            closeButton.style.padding = '5px 10px';
+            closeButton.style.fontSize = '16px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.style.backgroundColor = '#f44336'; // 红色背景
+            closeButton.style.border = 'none';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.zIndex = '10000'; // 确保按钮位于顶部
+
+            // 绑定关闭功能
+            closeButton.onclick = function() {
+                document.body.removeChild(provinceMapDiv);  // 移除地图容器
+                document.body.removeChild(closeButton);     // 移除关闭按钮
+            };
+
+            document.body.appendChild(closeButton);
+        });
+
+        // 鼠标悬停时高亮显示省份
+        layer.on('mouseover', function() {
+            layer.setStyle({
+                color: 'rgba(255,182,153,0.7)',
+                weight: 1.2,
+                fillColor: 'rgba(255,235,204,0.7)',
+                fillOpacity: 0.3
+            });
+        });
+
+        // 鼠标移开时恢复原样
+        layer.on('mouseout', function() {
+            layer.setStyle({
+                color: 'rgba(255,182,153,0.4)',
+                weight: 0.8,
+                fillColor: 'rgba(255,235,204,0.4)',
+                fillOpacity: 0.2
+            });
+        });
+    }
+</script>
+
+<style>
+    /* 确保轮播容器的宽高适应横屏比例，并且内容不溢出 */
+    .swiper-container {
+        width: 25vw;
+        height: 14.0625vw;
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+        .swiper-container {
+            width: 80vw;
+            height: 45vw;
+        }
+    }
+    /* 轮播图容器 */
+    .swiper-slide {
+        position: relative;  /* 确保内部的绝对定位元素相对于这个容器 */
+        text-align: center;  /* 使内容居中显示 */
+    }
+
+    /* 图片上方的文本 */
+    .image-info {
+        position: absolute;
+        top: 10px;  /* 距离图片顶部 */
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;  /* 白色文字 */
+        font-size: 12px;  /* 字体大小 */
+        background: rgba(0, 0, 0, 0.5);  /* 半透明黑色背景 */
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 10;  /* 确保文字显示在图片上方 */
+    }
+
+    /* 图片左下角的文本 */
+    .image-overlay {
+        position: absolute;
+        bottom: 10px;  /* 距离图片底部 */
+        left: 10px;    /* 距离图片左侧 */
+        color: white;  /* 白色文字 */
+        font-size: 12px;  /* 字体大小 */
+        background: rgba(0, 0, 0, 0.5);  /* 半透明背景 */
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 10;  /* 确保文字显示在图片上方 */
+    }
+
+    /* 确保图片按比例显示，并让图片最短边填充容器 */
+    .swiper-image {
+        width: 100%;             /* 宽度填满容器 */
+        height: 100%;            /* 高度填满容器 */
+        object-fit: cover;       /* 保证图片按比例放大并填满容器，可能会裁剪 */
+        object-position: center; /* 确保图片居中 */
+    }
+    /* 确保每个 swiper-slide 只显示一张图片 */
+    .swiper-wrapper {
+        display: flex;         /* 确保横向排列 */
+    }
+
+    .swiper-slide {
+        display: flex;          /* 使用 flexbox 让内容居中 */
+        justify-content: center;/* 水平居中 */
+        align-items: center;    /* 垂直居中 */
+        width: 100%;            /* 确保每个 swiper-slide 占满 100% 宽度 */
+        height: 100%;           /* 确保每个 swiper-slide 占满容器的高度 */
+    }
+
+    /* 确保图片按比例显示，并让图片最短边填充容器 */
+    .swiper-image {
+        width: 100%;             /* 宽度填满容器 */
+        height: 100%;            /* 高度填满容器 */
+        object-fit: cover;       /* 保证图片按比例放大并填满容器，可能会裁剪 */
+        object-position: center; /* 确保图片居中 */
+    }
+
+    /* 设置分页器和导航按钮 */
+    .swiper-button-next, .swiper-button-prev {
+        color: #fff;         /* 设置按钮颜色为白色 */
+        z-index: 10;         /* 确保按钮显示在图片上层 */
+    }
+
+    .swiper-pagination {
+        bottom: 10px;        /* 分页器位于底部 */
+    }
+</style>
+</body>
+</html>

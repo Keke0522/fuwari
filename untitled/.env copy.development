@@ -1,0 +1,13 @@
+# vite.config.js base 路径 路由base路径  需一致  除根目录 配绝对路径
+VITE_APP_BASE_URL = '/'
+
+## PUBLICK PATH
+VITE_APP_PUBLIC_PATH = '/device'
+
+## api url
+VITE_APP_API_PATH = '/'
+
+VITE_APP_API_WS_PATH = 'ws://192.168.2.45:8099/'
+
+# router base
+VITE_APP_ROUTER_BASE = ''
