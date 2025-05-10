@@ -3,6 +3,7 @@ import type {
 	NavBarConfig,
 	ProfileConfig,
 	SiteConfig,
+	CommentConfig
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
@@ -96,3 +97,8 @@ export const licenseConfig: LicenseConfig = {
 	name: "CC BY-NC-SA 4.0", // 许可证名称
 	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/", // 许可证的 URL 链接
 };
+export const commentConfig: CommentConfig = {
+	twikoo: {
+		envId: 'http://124.222.48.45:6777',
+	},
+}

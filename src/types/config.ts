@@ -68,6 +68,15 @@ export type LicenseConfig = {
 	name: string;
 	url: string;
 };
+export type CommentConfig = {
+	twikoo?: TwikooConfig
+}
+
+type TwikooConfig = {
+	envId: string
+	region?: string
+	lang?: string
+}
 
 export type LIGHT_DARK_MODE =
 	| typeof LIGHT_MODE
