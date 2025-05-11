@@ -11,18 +11,6 @@ lang: ''
 
 ---
 
-
-# 
-
-
-
-
-## 参考文章
-- [Astro官方文档](https://docs.astro.build/zh-cn/guides/deploy/)
-- [Fuwari添加评论系统](https://kekesxk.online/posts/bjk/添加评论功能/)
-- [Fuwari修改创建文章命令](https://kekesxk.online/posts/bjk/修改创建文章命令/)
-- [Fuwari添加自定义界面](https://kekesxk.online/posts/bjk/添加自定义界面/)
-
 # 一、前言
 
 折腾过不少博客框架，比如 **VanBlog**、**Halo**，它们都提供了简洁易用的后台功能和优雅的文章管理体验。虽然动态博客框架功能强大，但需要定期维护服务器和数据库，长期使用下来成本较高。
@@ -258,3 +246,9 @@ const currentYear = new Date().getFullYear();
 
 ```
 
+## 
+
+- [Astro官方文档](https://docs.astro.build/zh-cn/guides/deploy/)
+- [Fuwari添加评论系统](https://kekesxk.online/posts/bjk/添加评论功能/)
+- [Fuwari修改创建文章命令](https://kekesxk.online/posts/bjk/修改创建文章命令/)
+- [Fuwari添加自定义界面](https://kekesxk.online/posts/bjk/添加自定义界面/)
