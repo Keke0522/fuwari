@@ -17,12 +17,12 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true, // 是否启用横幅
-		src: "assets/images/demo-banner.jpg", // 横幅图片的路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
+		src: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/%E5%9C%A8%E5%B1%B1%E7%9A%84%E9%82%A3%E8%BE%B94K%E9%A3%8E%E6%99%AF%E5%A3%81%E7%BA%B83840x2160_%E5%BD%BC%E5%B2%B8%E5%9B%BE%E7%BD%91.jpg?imagevanblog", // 横幅图片的路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
 		position: "center", // 横幅位置，对应 object-position 属性，只支持 'top', 'center', 'bottom'，默认为 'center'
 		credit: {
-			enable: false, // 是否显示横幅图片的版权信息
-			text: "", // 显示的版权文字
-			url: "", // （可选）指向原始艺术作品或艺术家页面的 URL 链接
+			enable: true, // 是否显示横幅图片的版权信息
+			text: "在山的那边", // 显示的版权文字
+			url: "https://pic.netbian.com/tupian/36636.html", // （可选）指向原始艺术作品或艺术家页面的 URL 链接
 		},
 	},
 	toc: {
@@ -43,22 +43,9 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
-
-		// // 工具站
-		// {
-		// 	name: "工具站",
-		// 	url: "/tools/",
-		// },
-		// // 知识库
-		// {
-		// 	name: "知识库",
-		// 	url: "https://kekesxk.online/c/gj/",
-		// 	external: true
-		// },
 		LinkPreset.Zuji,
 		LinkPreset.Zsk,
 		LinkPreset.About,
-		// {}
 		// {
 		// 	name: "GitHub",
 		// 	url: "https://github.com/saicaca/fuwari", // 内部链接不应包括基础路径，系统会自动添加
