@@ -63,7 +63,7 @@ import MusicPlayer from './MusicPlayer.vue'
 import { Icon } from '@iconify/vue'
 import { ref } from 'vue'
 
-const collapsed = ref(false)
+const collapsed = ref(true)
 
 const baseBtnStyle = {
   backgroundColor: '#ffffffcc',

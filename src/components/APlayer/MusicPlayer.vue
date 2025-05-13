@@ -324,7 +324,7 @@ const setProgressBtn = (e: MouseEvent) => {
   border-radius: 3px;
   position: relative;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 18px;
 }
 
 .progress-bg {
@@ -400,7 +400,7 @@ const setProgressBtn = (e: MouseEvent) => {
   }
 
   .left-panel {
-    margin-top: -20px;
+    margin-top: -15px;
     width: 100%;
     flex: none;
   }
