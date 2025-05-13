@@ -35,8 +35,10 @@ const {
 	setOGTypeArticle,
 	headings = [],
 } = Astro.props;
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 const hasBannerCredit =
-	siteConfig.banner.enable && siteConfig.banner.credit.enable;
+    siteConfig.banner.enable &&
+    siteConfig.banner.credit.enable ;
 const hasBannerLink = !!siteConfig.banner.credit.url;
 
 const mainPanelTop = siteConfig.banner.enable
@@ -60,9 +62,7 @@ const mainPanelTop = siteConfig.banner.enable
                   src={siteConfig.banner.src} position={siteConfig.banner.position}
     >
     </ImageWrapper>
-    <div class="absolute bottom-[82px] left-1/2 transform -translate-x-1/2 flex justify-center items-center rounded-lg px-3  z-99999">
-        <APlayer client:only="vue" />
-    </div>
+
 </div>}
 
 <!-- Main content -->
@@ -73,16 +73,17 @@ const mainPanelTop = siteConfig.banner.enable
         <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
     mx-auto gap-4 px-0 md:px-4"
         >
-            <!-- 音乐播放器 -->
-
-
+            <!--音乐播放器-->
+            <!--音乐播放器-->
+            <div class="absolute -top-[6.57rem]  flex items-center rounded-lg z-40 pointer-events-auto px-3 bg-black/60 hover:bg-black/70">
+                <APlayer client:only="vue" />
+            </div>
             <!-- Banner image credit -->
             {hasBannerCredit &&
                     <a href={siteConfig.banner.credit.url} id="banner-credit" target="_blank" rel="noopener" aria-label="Visit image source"
                                    class:list={["group onload-animation transition-all absolute flex justify-center items-center rounded-full " +
                                    "px-3 right-4 -top-[3.25rem] bg-black/60 hover:bg-black/70 h-9", {"hover:pr-9 active:bg-black/80": hasBannerLink}]}
             >
-
 
                 <Icon class="text-white/75 text-[1.25rem] mr-1" name="material-symbols:copyright-outline-rounded" ></Icon>
                 <div class="text-white/75 text-xs">{siteConfig.banner.credit.text}</div>

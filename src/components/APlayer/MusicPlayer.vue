@@ -242,8 +242,8 @@ const setProgressBtn = (e: MouseEvent) => {
       <p class="mobile-lyric-line" v-if="ci">{{ lyricList[currentLyc]?.lyc }}</p>
     </div>
 
-    <div class="lyricBox" ref="lyricContainerRef" >
-      <div class="lyricStyle" v-if="ci" :style="lycStyle">
+    <div class="lyricBox" v-if="ci" ref="lyricContainerRef" >
+      <div class="lyricStyle"  :style="lycStyle">
         <p
             v-for="(item, index) in lyricList"
             :key="index"
@@ -266,18 +266,17 @@ const setProgressBtn = (e: MouseEvent) => {
   display: flex;
   gap: 20px;
   padding: 10px;
-  margin-left: 30px;
-  height: 100px;
+  height: 120px;
+  background-color: transparent;
 }
 
 .left-panel {
   height: 100px;
-  background: v-bind(darkTheme ? '#333' : '#fff');
-  border-radius: 12px ;
+  border-radius: 12px;
   flex: 0 0 200px;
   display: flex;
   flex-direction: column;
- margin-top: -10px;
+  margin-top: -10px;
   padding-left: 20px;
   padding-right: 22px;
 }
@@ -293,7 +292,7 @@ const setProgressBtn = (e: MouseEvent) => {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: v-bind(darkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)');
+  background: rgba(255, 255, 255, 0.1); /* 暗色背景适配 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -301,16 +300,17 @@ const setProgressBtn = (e: MouseEvent) => {
   transition: all 0.2s;
   line-height: 0;
   padding-left: 8px;
+  color: #fff; /* 白色图标文字 */
 }
 
 .control_btn:hover {
   transform: scale(1.1);
-  background: v-bind(darkTheme ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.08)');
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .song-name {
   font-size: 14px;
-  color: v-bind(darkTheme ? '#fff' : '#333');
+  color: #fff; /* 暗色主题白色文字 */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -320,11 +320,11 @@ const setProgressBtn = (e: MouseEvent) => {
 .progress-wrapper {
   width: 100%;
   height: 6px;
-  background: v-bind(darkTheme ? '#555' : '#eee');
+  background: #333; /* 深色背景的进度条轨道 */
   border-radius: 3px;
   position: relative;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .progress-bg {
@@ -340,23 +340,21 @@ const setProgressBtn = (e: MouseEvent) => {
   width: 0%;
   border-radius: 3px;
   transition: width 0.1s linear;
+  background-color: #1890ff; /* 播放进度颜色 */
 }
 
 .lyricBox {
   border-radius: 0 12px 12px 0;
-
-  min-width: 300px;
+  min-width: 250px;
   flex: 1;
-  height: 100px;
+  height: 80px;
   margin-top: -10px;
   overflow: hidden;
   position: relative;
   margin-left: -31px;
-
 }
 
 .lyricStyle {
-  background: v-bind(darkTheme ? '#333' : '#fff');
   padding-left: 30px;
   position: absolute;
   width: 100%;
@@ -364,11 +362,18 @@ const setProgressBtn = (e: MouseEvent) => {
 }
 
 .lyricStyle p {
-  margin: 8px 0;
+  margin: 5px 0;
   transition: all 0.3s;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  color: #aaa; /* 默认歌词颜色 */
+  text-align: center;
+}
+
+.lyricStyle p.active {
+  color: #1890ff; /* 高亮歌词颜色 */
+  font-weight: bold;
 }
 
 .control_btn.active {
@@ -377,19 +382,13 @@ const setProgressBtn = (e: MouseEvent) => {
   box-shadow: 0 0 5px rgba(24, 144, 255, 0.6);
 }
 
-.control_btn.active {
-  background: v-bind(darkTheme ? '#1890ff' : '#cce7ff');
-  color: v-bind(darkTheme ? '#fff' : '#0050b3');
-  box-shadow: 0 0 5px v-bind(darkTheme ? 'rgba(24, 144, 255, 0.6)' : 'rgba(0, 80, 179, 0.3)');
-}
-
 .mobile-lyric-line {
   display: none;
   text-align: center;
   margin-top: 3px;
   font-size: 14px;
   font-weight: bold;
-  color: v-bind(lyricColor);
+  color: #1890ff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -399,26 +398,15 @@ const setProgressBtn = (e: MouseEvent) => {
   .mobile-lyric-line {
     display: block;
   }
-  .music-player-wrapper {
-    flex-direction: column;
-    height: auto;
-    gap: 0px;
-    padding: 10px;
-    margin-left: 0px;
-    align-items: flex-end; /* ➤ 右对齐 */
-  }
 
   .left-panel {
-    margin-top: 0;
+    margin-top: -20px;
     width: 100%;
     flex: none;
   }
 
   .lyricBox {
-    margin-top: 10px;
-    margin-left: 0;
-    width: 100%;
-    border-radius: 12px;
+    display: none;
   }
 }
 </style>

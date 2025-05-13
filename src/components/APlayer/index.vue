@@ -1,45 +1,109 @@
 <template>
   <div>
-    <br>
-    <div style="height: 80px; display: inline-block;">
-      <MusicPlayer
-          :dark-theme="false"
-          :musicList="musicList"
-          :offsetY="32"
-          diskHW="40px" lyric-color="#00ff88"
-          lyricSize="14px" progress-color="#00ff88">
-        <template #next>
-          <Icon icon="lucide:skip-forward" style="margin-right: 8px; vertical-align: middle; font-size: 20px"/>
-          <!--          下一首-->
-        </template>
+    <br />
+    <!-- 容器高度根据 collapsed 自动变化 -->
+    <div
+        :style="{
+        display: 'flex',
+        alignItems: 'center',
+        height: collapsed ? '24px' : '70px',
+        marginTop: collapsed ? '0px' : '-5px',
+        transition: 'height 0.3s ease, margin-top 0.3s ease',
+      }"
+    >
+      <!-- 收起/展开按钮 -->
+      <button
+          @click="collapsed = !collapsed"
+          :style="collapsed ? collapsedBtnStyle : expandedBtnStyle"
+      >
+        <Icon
+            :icon="collapsed ? 'lucide:music' : 'lucide:chevron-left'"
+            :style="collapsed ? iconSmallStyle : iconLargeStyle"
+        />
+      </button>
 
-        <template #last>
-          <Icon icon="lucide:skip-back" style="margin-right: 8px; vertical-align: middle;font-size: 20px"/>
-          <!--          上一首-->
-        </template>
+      <!-- Music Player -->
+      <div v-show="!collapsed" style="display: inline-block;">
+        <MusicPlayer
+            :dark-theme="true"
+            :musicList="musicList"
+            :offsetY="32"
+            diskHW="40px"
+            :progressColor="'#0d6efd'"
+            :lyricColor="'#00ffcc'"
+            lyricSize="14px"
+        >
+          <template #next>
+            <Icon icon="lucide:skip-forward" style="margin-right: 8px; vertical-align: middle; font-size: 20px" />
+          </template>
 
-        <template #pause>
-          <Icon icon="lucide:pause" style="margin-right: 8px; vertical-align: middle;font-size: 20px"/>
-          <!--          暂停-->
-        </template>
+          <template #last>
+            <Icon icon="lucide:skip-back" style="margin-right: 8px; vertical-align: middle; font-size: 20px" />
+          </template>
 
-        <template #play>
-          <Icon icon="lucide:play" style="margin-right: 8px; vertical-align: middle;font-size: 20px"/>
-          <!--          播放-->
-        </template>
-        <!--        显示歌词-->
-        <template #lyric>
-          <Icon icon="lucide:list-music" style="margin-right: 8px; vertical-align: middle;font-size: 20px"/>
-        </template>
-      </MusicPlayer>
+          <template #pause>
+            <Icon icon="lucide:pause" style="margin-right: 8px; vertical-align: middle; font-size: 20px" />
+          </template>
+
+          <template #play>
+            <Icon icon="lucide:play" style="margin-right: 8px; vertical-align: middle; font-size: 20px" />
+          </template>
+
+          <template #lyric>
+            <Icon icon="lucide:list-music" style="margin-right: 8px; vertical-align: middle; font-size: 20px" />
+          </template>
+        </MusicPlayer>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import MusicPlayer from './MusicPlayer.vue'
-import {Icon} from '@iconify/vue'
+import { Icon } from '@iconify/vue'
+import { ref } from 'vue'
 
+const collapsed = ref(false)
+
+const baseBtnStyle = {
+  backgroundColor: '#ffffffcc',
+  color: '#222',
+  border: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
+  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
+  transition: 'all 0.3s ease',
+}
+
+const collapsedBtnStyle = {
+  ...baseBtnStyle,
+  width: '24px',
+  height: '24px',
+  borderRadius: '50%',
+  marginTop: '-22px',
+
+}
+
+const expandedBtnStyle = {
+  ...baseBtnStyle,
+  width: '32px',
+  height: '32px',
+  borderRadius: '6px',
+  marginRight: '12px',
+}
+
+const iconSmallStyle = {
+  fontSize: '16px',
+  color: '#222',
+
+}
+
+const iconLargeStyle = {
+  fontSize: '20px',
+  color: '#222',
+}
 const musicList = [
   {
     title: '三年二班',
