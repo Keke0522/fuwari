@@ -66,6 +66,10 @@
           "type": "string",
           "default": ""
         },
+        "pinned": {
+          "type": "boolean",
+          "default": false
+        },
         "prevTitle": {
           "type": "string",
           "default": ""

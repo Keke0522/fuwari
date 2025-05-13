@@ -3,9 +3,11 @@ import { Icon } from "astro-icon/components";
 import { profileConfig } from "../../config";
 import { url } from "../../utils/url-utils";
 import ImageWrapper from "../misc/ImageWrapper.astro";
+import APlayer from "../../components/APlayer/index.vue"
 
 const config = profileConfig;
 ---
+<!--头像-->
 <div class="card-base p-3">
     <a aria-label="Go to About Page" href={url('/about/')}
        class="group block relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3
@@ -35,5 +37,6 @@ const config = profileConfig;
             </a>}
         </div>
     </div>
+
 </div>
 

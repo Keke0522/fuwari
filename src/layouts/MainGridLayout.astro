@@ -8,6 +8,9 @@ import { Icon } from "astro-icon/components";
 import ImageWrapper from "../components/misc/ImageWrapper.astro";
 import TOC from "../components/widget/TOC.astro";
 import { siteConfig } from "../config";
+
+import APlayer from "../components/APlayer/index.vue"
+
 import {
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_EXTEND,
@@ -57,27 +60,38 @@ const mainPanelTop = siteConfig.banner.enable
                   src={siteConfig.banner.src} position={siteConfig.banner.position}
     >
     </ImageWrapper>
+    <div class="absolute bottom-[82px] left-1/2 transform -translate-x-1/2 flex justify-center items-center rounded-lg px-3  z-99999">
+        <APlayer client:only="vue" />
+    </div>
 </div>}
 
 <!-- Main content -->
 <div class="absolute w-full z-30 pointer-events-none" style={`top: ${mainPanelTop}`}>
+
     <!-- The pointer-events-none here prevent blocking the click event of the TOC -->
     <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto">
         <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
     mx-auto gap-4 px-0 md:px-4"
         >
+            <!-- 音乐播放器 -->
+
+
             <!-- Banner image credit -->
-            {hasBannerCredit && <a href={siteConfig.banner.credit.url} id="banner-credit" target="_blank" rel="noopener" aria-label="Visit image source"
+            {hasBannerCredit &&
+                    <a href={siteConfig.banner.credit.url} id="banner-credit" target="_blank" rel="noopener" aria-label="Visit image source"
                                    class:list={["group onload-animation transition-all absolute flex justify-center items-center rounded-full " +
                                    "px-3 right-4 -top-[3.25rem] bg-black/60 hover:bg-black/70 h-9", {"hover:pr-9 active:bg-black/80": hasBannerLink}]}
             >
+
+
                 <Icon class="text-white/75 text-[1.25rem] mr-1" name="material-symbols:copyright-outline-rounded" ></Icon>
                 <div class="text-white/75 text-xs">{siteConfig.banner.credit.text}</div>
                 <Icon class:list={["transition absolute text-[oklch(0.75_0.14_var(--hue))] right-4 text-[0.75rem] opacity-0",
                     {"group-hover:opacity-100": hasBannerLink}]}
                       name="fa6-solid:arrow-up-right-from-square">
                 </Icon>
-            </a>}
+            </a>
+            }
 
 
             <SideBar class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem] onload-animation" headings={headings}></SideBar>

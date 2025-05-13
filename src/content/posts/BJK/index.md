@@ -105,31 +105,6 @@ export const siteConfig: SiteConfig = {
 	],
 };
 
-export const navBarConfig: NavBarConfig = {
-	links: [
-		LinkPreset.Home,
-		LinkPreset.Archive,
-		LinkPreset.Zuji,
-		LinkPreset.Zsk,
-		LinkPreset.About,
-		// {
-		// 	name: "GitHub",
-		// 	url: "https://github.com/saicaca/fuwari", // 内部链接不应包括基础路径，系统会自动添加
-		// 	external: true, // 显示外部链接图标，且会在新标签页中打开
-		// },
-	],
-};
-
-export const licenseConfig: LicenseConfig = {
-	enable: true, // 是否启用许可证
-	name: "CC BY-NC-SA 4.0", // 许可证名称
-	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/", // 许可证的 URL 链接
-};
-export const commentConfig: CommentConfig = {
-	twikoo: {
-		envId: 'https://keke0420.online:6776',
-	},
-}
 
 ```
 
