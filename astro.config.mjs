@@ -44,6 +44,7 @@ export default defineConfig({
         globalInstance: true, // 全局实例
     }), icon({
         include: {
+            mdi: ["*"],
             "preprocess: vitePreprocess(),": ["*"],
             "fa6-brands": ["*"],
             "fa6-regular": ["*"],
