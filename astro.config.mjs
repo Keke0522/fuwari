@@ -17,6 +17,8 @@ import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js"; // 自定义指令解析器
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js"; // 自动生成摘要
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs"; // 计算阅读时长
+import remarkImageCaption from "./src/plugins/remark-image-caption.ts"; //图片标题
+import remarkImageWidth from './src/plugins/remark-image-width.js'//图片大小
 
 import vue from "@astrojs/vue"; // 支持 Vue
 
@@ -60,6 +62,13 @@ export default defineConfig({
             remarkExcerpt, // 自动生成摘要
             remarkGithubAdmonitionsToDirectives, // 支持 GitHub 风格提示块
             remarkDirective, // 支持 ::note 等指令
+            [
+                remarkImageCaption,
+                {
+                    className: 'image-caption',
+                },
+            ],
+            remarkImageWidth,
             remarkSectionize, // 自动 section 包裹
             parseDirectiveNode, // 自定义指令处理
         ],

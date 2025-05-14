@@ -1,7 +1,8 @@
 ---
 title: Fuwari 部署指南（教程）
 published: 2024-05-01
-description: "。。。。。。"
+updated: 2025-05-14
+description: "Fuwari 部署详细步骤"
 image: ""
 tags: ["Fuwari", "教程"]
 category: Fuwari
