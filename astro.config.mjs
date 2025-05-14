@@ -22,39 +22,39 @@ import remarkImageWidth from './src/plugins/remark-image-width.js'//图片大小
 
 import vue from "@astrojs/vue"; // 支持 Vue
 
+import expressiveCode from "astro-expressive-code";
+
 // https://astro.build/config
 export default defineConfig({
     site: "https://fuwari.vercel.app/", // 站点地址
     base: "/", // 基础路径
     trailingSlash: "always", // URL 结尾始终加 /
-    integrations: [
-        tailwind({
-            nesting: true, // 支持嵌套语法
-        }),
-        swup({
-            theme: false,
-            animationClass: "transition-swup-", // 动画类名前缀，避免和 Tailwind 冲突
-            containers: ["main", "#toc"], // 参与转场的容器
-            smoothScrolling: true, // 平滑滚动
-            cache: true, // 开启缓存
-            preload: true, // 预加载
-            accessibility: true, // 提升可访问性
-            updateHead: true, // 更新 head 标签
-            updateBodyClass: false, // 不更新 body class
-            globalInstance: true, // 全局实例
-        }),
-        icon({
-            include: {
-                "preprocess: vitePreprocess(),": ["*"],
-                "fa6-brands": ["*"],
-                "fa6-regular": ["*"],
-                "fa6-solid": ["*"],
-            },
-        }),
-        svelte(), // Svelte 集成
-        sitemap(), // 自动生成 sitemap
-        vue(), // Vue 集成
-    ],
+    integrations: [tailwind({
+        nesting: true, // 支持嵌套语法
+    }), swup({
+        theme: false,
+        animationClass: "transition-swup-", // 动画类名前缀，避免和 Tailwind 冲突
+        containers: ["main", "#toc"], // 参与转场的容器
+        smoothScrolling: true, // 平滑滚动
+        cache: true, // 开启缓存
+        preload: true, // 预加载
+        accessibility: true, // 提升可访问性
+        updateHead: true, // 更新 head 标签
+        updateBodyClass: false, // 不更新 body class
+        globalInstance: true, // 全局实例
+    }), icon({
+        include: {
+            "preprocess: vitePreprocess(),": ["*"],
+            "fa6-brands": ["*"],
+            "fa6-regular": ["*"],
+            "fa6-solid": ["*"],
+        },
+    }), // Svelte 集成
+    svelte(), // 自动生成 sitemap
+    sitemap(), // Vue 集成
+    vue(), expressiveCode({
+            themes: ["catppuccin-frappe", "catppuccin-latte"],
+        })],
     markdown: {
         remarkPlugins: [
             remarkMath, // 支持 $ 数学语法

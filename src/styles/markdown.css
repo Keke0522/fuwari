@@ -24,7 +24,7 @@
         underline decoration-[var(--link-underline)] decoration-1 decoration-dashed underline-offset-4;
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
-    
+
         &:hover, &:active {
             @apply decoration-transparent;
             background: var(--btn-plain-bg-hover);
@@ -58,18 +58,18 @@
         }
     }
 
-    pre {
-        @apply bg-[var(--codeblock-bg)] !important;
-        @apply rounded-xl px-5;
+    /*pre {*/
+    /*    @apply bg-[var(--codeblock-bg)] !important;*/
+    /*    @apply rounded-xl px-5;*/
 
-        code {
-            @apply bg-transparent text-inherit text-sm p-0;
+    /*    code {*/
+    /*        @apply bg-transparent text-inherit text-sm p-0;*/
 
-            ::selection {
-                @apply bg-[var(--codeblock-selection)];
-            }
-        }
-    }
+    /*        ::selection {*/
+    /*            @apply bg-[var(--codeblock-selection)];*/
+    /*        }*/
+    /*    }*/
+    /*}*/
 
     ul, ol {
         li::marker {

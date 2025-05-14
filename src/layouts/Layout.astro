@@ -298,24 +298,26 @@ function initCustomScrollbar() {
 				nativeScrollbarsOverlaid: true,    // don't initialize the overlay scrollbar if there is a native one
 			}
 		}, {
-		scrollbars: {
-			theme: 'scrollbar-base scrollbar-auto py-1',
-			autoHide: 'move',
-			autoHideDelay: 500,
-			autoHideSuspend: false,
-		},
-	});
-	const preElements = document.querySelectorAll('pre');
-	preElements.forEach((ele) => {
-		OverlayScrollbars(ele, {
 			scrollbars: {
-				theme: 'scrollbar-base scrollbar-dark px-2',
-				autoHide: 'leave',
+				theme: 'scrollbar-base scrollbar-auto py-1',
+				autoHide: 'move',
 				autoHideDelay: 500,
-				autoHideSuspend: false
-			}
+				autoHideSuspend: false,
+			},
 		});
-	});
+
+	// const preElements = document.querySelectorAll('pre');
+	// preElements.forEach((ele) => {
+	// OverlayScrollbars(ele, {
+	//     scrollbars: {
+	//       theme: 'scrollbar-base scrollbar-dark px-2',
+	//       autoHide: 'leave',
+	//       autoHideDelay: 500,
+	//       autoHideSuspend: false
+	//     }
+	//   });
+	// });
+
 	const katexElements = document.querySelectorAll('.katex-display') as NodeListOf<HTMLElement>;
 	katexElements.forEach((ele) => {
 		OverlayScrollbars(ele, {
@@ -328,13 +330,13 @@ function initCustomScrollbar() {
 
 function showBanner() {
 	if (!siteConfig.banner.enable) return;
-	
+
 	const banner = document.getElementById('banner');
 	if (!banner) {
 		console.error('Banner element not found');
 		return;
 	}
-	
+
 	banner.classList.remove('opacity-0', 'scale-105');
 }
 
