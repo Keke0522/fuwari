@@ -348,7 +348,6 @@ const setProgressBtn = (e: MouseEvent) => {
   min-width: 250px;
   flex: 1;
   height: 80px;
-  margin-top: 0px;
   overflow: hidden;
   position: relative;
   margin-left: -31px;

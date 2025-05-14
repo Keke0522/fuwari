@@ -7,7 +7,6 @@
         display: 'flex',
         alignItems: 'center',
         height: collapsed ? '24px' : '70px',
-        marginTop: collapsed ? '0px' : '0px',
         transition: 'height 0.3s ease, margin-top 0.3s ease',
       }"
     >
