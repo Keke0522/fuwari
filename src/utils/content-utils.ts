@@ -1,6 +1,7 @@
 import { getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
+import type {BlogPostData} from "@/types/config.ts";
 
 export async function getSortedPosts() {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
@@ -59,6 +60,24 @@ export type Category = {
 	name: string;
 	count: number;
 };
+export async function getPostSeries(
+	seriesName: string,
+): Promise<{ body: string; data: BlogPostData; slug: string }[]> {
+	const posts = (await getCollection('posts', ({ data }) => {
+		return (
+			(import.meta.env.PROD ? data.draft !== true : true) &&
+			data.series === seriesName
+		)
+	})) as unknown as { body: string; data: BlogPostData; slug: string }[]
+
+	posts.sort((a, b) => {
+		const dateA = new Date(a.data.published)
+		const dateB = new Date(b.data.published)
+		return dateA > dateB ? 1 : -1
+	})
+
+	return posts
+}
 
 export async function getCategoryList(): Promise<Category[]> {
 	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {

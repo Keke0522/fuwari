@@ -7,6 +7,7 @@ tags: ["Fuwari", "教程"]
 category: Fuwari
 draft: false
 lang: ''
+series: "改造博客"
 ---
 
 # 改动

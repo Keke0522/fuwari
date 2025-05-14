@@ -5,6 +5,7 @@ enum I18nKey {
 	zsk = "zsk",
 	archive = "archive",
 	search = "search",
+	series = 'series',
 
 	tags = "tags",
 	categories = "categories",

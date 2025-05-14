@@ -8,6 +8,7 @@ tags: ["Fuwari", "教程"]
 category: Fuwari
 draft: false
 lang: ''
+series: "改造博客"
 ---
 
 本篇参考 [feat: add image-caption feature](https://github.com/saicaca/fuwari/pull/351)

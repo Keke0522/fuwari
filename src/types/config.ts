@@ -40,6 +40,7 @@ export enum LinkPreset {
 	About = 2,
 	Zuji = 3,
 	Zsk = 4,
+	Series = 5,
 }
 
 export type NavBarLink = {
@@ -95,6 +96,7 @@ export type BlogPostData = {
 	prevTitle?: string;
 	prevSlug?: string;
 	pinned?: boolean
+	series?: string
 	nextTitle?: string;
 	nextSlug?: string;
 };

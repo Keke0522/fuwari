@@ -34,7 +34,7 @@ export default defineConfig({
     }), swup({
         theme: false,
         animationClass: "transition-swup-", // 动画类名前缀，避免和 Tailwind 冲突
-        containers: ["main", "#toc"], // 参与转场的容器
+        containers: ["main", "#toc", "#series"], // 参与转场的容器
         smoothScrolling: true, // 平滑滚动
         cache: true, // 开启缓存
         preload: true, // 预加载
