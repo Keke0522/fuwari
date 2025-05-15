@@ -87,6 +87,6 @@ export const licenseConfig: LicenseConfig = {
 };
 export const commentConfig: CommentConfig = {
 	twikoo: {
-		envId: 'https://twikoo-0g2xbuyh0462214c-1330580499.ap-shanghai.app.tcloudbase.com/twikoo',
+		envId: 'https://124.222.48.45:6776',
 	},
 }
