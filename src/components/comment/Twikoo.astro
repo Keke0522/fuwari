@@ -1,19 +1,31 @@
 ---
+// 组件头部
 import { commentConfig } from '@/config'
 
 interface Props {
-  path: string
+    path: string
 }
 
+// 合并配置
 const config = {
-  ...commentConfig.twikoo,
-  el: '#tcomment',
-  path: Astro.props.path,
+    ...commentConfig.twikoo,
+    el: '#tcomment',
+    path: Astro.props.path,
 }
 ---
 
+<!-- 评论容器 -->
 <div id="tcomment"></div>
-<script is:inline src="https://cdn.staticfile.org/twikoo/1.6.32/twikoo.all.min.js"></script>
+
+<!-- 配置预处理 -->
 <script is:inline define:vars={{ config }}>
-  twikoo.init(config)
+    // 将配置存入全局对象，避免初始化时序问题
+    window.__twikooConfig = config;
 </script>
+
+<!-- 异步加载 + 自动初始化 -->
+<script
+        is:inline
+        src="https://cdn.staticfile.org/twikoo/1.6.32/twikoo.all.min.js"
+        onload="twikoo.init(window.__twikooConfig)"
+></script>
