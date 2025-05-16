@@ -17,6 +17,6 @@ if (commentConfig?.twikoo) {
 }
 ---
 <div class="card-base p-6 mb-4 text-black dark:text-white">
-    {commentService === 'twikoo' && <Twikoo client:load path={path} />}
+    {commentService === 'twikoo' && <Twikoo path={path} />}
     {commentService === '' && null}
 </div>
