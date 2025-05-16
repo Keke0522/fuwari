@@ -30,6 +30,7 @@
     "@iconify-json/fa6-regular": "^1.2.3",
     "@iconify-json/fa6-solid": "^1.2.3",
     "@iconify-json/material-symbols": "^1.2.20",
+    "@iconify-json/mdi": "^1.2.3",
     "@iconify/svelte": "^4.2.0",
     "@iconify/vue": "^5.0.0",
     "@swup/astro": "^1.6.0",
@@ -37,6 +38,7 @@
     "astro": "5.7.12",
     "astro-expressive-code": "^0.41.2",
     "astro-icon": "^1.1.5",
+    "axios": "^1.9.0",
     "hastscript": "^9.0.1",
     "katex": "^0.16.22",
     "leaflet": "^1.9.4",
@@ -65,7 +67,6 @@
     "typescript": "^5.8.3",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
-    "@iconify-json/mdi": "^1.2.3",
     "vue": "^3.5.13"
   },
   "devDependencies": {

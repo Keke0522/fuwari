@@ -5,7 +5,6 @@ import { commentConfig } from '@/config'
 interface Props {
     path: string
 }
-
 // 合并配置
 const config = {
     ...commentConfig.twikoo,
@@ -13,7 +12,6 @@ const config = {
     path: Astro.props.path,
 }
 ---
-
 <!-- 评论容器 -->
 <div id="tcomment"></div>
 
@@ -22,7 +20,6 @@ const config = {
     // 将配置存入全局对象，避免初始化时序问题
     window.__twikooConfig = config;
 </script>
-
 <!-- 异步加载 + 自动初始化 -->
 <script
         is:inline

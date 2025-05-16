@@ -1,21 +1,130 @@
 ---
-
-import MainGridLayout from "../layouts/MainGridLayout.astro";
-
-import { getEntry } from "astro:content";
-import { render } from "astro:content";
-import Markdown from "@components/misc/Markdown.astro";
-import I18nKey from "../i18n/i18nKey";
-import { i18n } from "../i18n/translation";
-import Zsks from "./zsks.vue";
-
+import MainGridLayout from '@/layouts/MainGridLayout.astro'
+import Markdown from '@components/misc/Markdown.astro'
+import { Icon } from 'astro-icon/components'
+import {i18n} from "@i18n/translation.ts";
+import I18nKey from "@i18n/i18nKey.ts";
 ---
+
 <MainGridLayout title={i18n(I18nKey.zsk)} description={i18n(I18nKey.zsk)}>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
-        <div class="card-base z-10 px-9 py-6 relative w-full ">
-            <Markdown class="mt-2">
-                <Zsks client:load />
-            </Markdown>
+        <div class="card-base z-10 px-6 md:px-9 py-8 relative w-full">
+
+            <!-- 页面标题 -->
+            <!--<div class="text-center mb-10">-->
+            <!--    <h1 class="text-4xl font-bold mb-3 text-[var(&#45;&#45;primary)]">项目合集</h1>-->
+            <!--    <div class="w-24 h-1 bg-[var(&#45;&#45;primary)] mx-auto rounded-full opacity-70"></div>-->
+            <!--    <p class="mt-4 text-50 max-w-2xl mx-auto">这里展示了我的各种项目集合，帮助你更好地浏览相关主题的文章。</p>-->
+            <!--</div>-->
+
+            <!-- 项目列表 -->
+            <div class="grid grid-cols-1 gap-x-6 gap-y-16 my-8">
+                <div class="w-full">
+                    <div class="flex items-center gap-3 mb-6 border-l-4 border-[var(--primary)] pl-4">
+                        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">摄影工具</h2>
+                    </div>
+                    <p class="text-50 mb-6 text-lg text-neutral-900 dark:text-neutral-100">一些用于摄影和后期处理的项目。</p>
+
+                    <!-- 项目卡片网格 -->
+                    <div class="grid grid-cols-1 gap-6">
+                        <details class="group flex flex-col h-full overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md transition-all duration-300" open>
+                            <summary class="p-6 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between cursor-pointer select-none focus:outline-none">
+                                <div class="flex items-center gap-3">
+                                    <Icon name="mdi:bookmark-outline" class="text-xl text-[var(--primary)]" />
+                                    <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">Lightroom Preset 分享</h3>
+                                </div>
+                                <span class="inline-flex items-center">
+                  <Icon name="mdi:chevron-down" class="text-lg transform group-open:rotate-180 transition-transform duration-300" />
+                </span>
+                            </summary>
+                            <div class="details-content transition-all duration-500 ease-in-out overflow-hidden">
+                                <div class="p-6">
+                                    <p class="text-50 text-sm mt-3 mb-4 text-neutral-900 dark:text-neutral-100">分享一些我常用的 Lightroom 预设，可免费下载使用。</p>
+                                    <div class="flex items-center gap-4 text-50 text-sm text-neutral-900 dark:text-neutral-100 mb-4">
+                                        <div class="flex items-center gap-1">
+                                            <Icon name="mdi:file-document-outline" class="text-base" />
+                                            <span>2 篇文章</span>
+                                        </div>
+                                        <a
+                                                href="https://example.com"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="inline-flex items-center gap-1 text-[var(--primary)] hover:underline"
+                                        >
+                                            <Icon name="mdi:link-variant" class="text-base" />
+                                            <span>项目链接</span>
+                                        </a>
+                                    </div>
+                                    <div class="grid grid-cols-1 gap-4">
+                                        <a href="/posts/preset-collection/" class="block p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">
+                                            <h4 class="text-lg font-medium mb-2 text-neutral-900 dark:text-neutral-100">我最常用的5款预设</h4>
+                                            <div class="flex items-center gap-4 text-sm text-50 text-neutral-900 dark:text-neutral-100">
+                                                <div class="flex items-center gap-1">
+                                                    <Icon name="mdi:calendar" class="text-base" />
+                                                    <span>2024/08/12</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <Icon name="mdi:folder-outline" class="text-base" />
+                                                    <span>摄影后期</span>
+                                                </div>
+                                            </div>
+                                            <p class="text-50 text-sm mt-2 line-clamp-2 text-neutral-900 dark:text-neutral-100">这些预设适用于旅行风光、城市街拍、人像等多个场景。</p>
+                                        </a>
+                                        <a href="/posts/preset-tips/" class="block p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">
+                                            <h4 class="text-lg font-medium mb-2 text-neutral-900 dark:text-neutral-100">如何自制预设并打包分享</h4>
+                                            <div class="flex items-center gap-4 text-sm text-50 text-neutral-900 dark:text-neutral-100">
+                                                <div class="flex items-center gap-1">
+                                                    <Icon name="mdi:calendar" class="text-base" />
+                                                    <span>2024/09/01</span>
+                                                </div>
+                                            </div>
+                                            <p class="text-50 text-sm mt-2 line-clamp-2 text-neutral-900 dark:text-neutral-100">教你快速制作和导出适合不同风格的 Lightroom 预设。</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 示例 markdown 区域 -->
+            <div class="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+                <Markdown class="prose dark:prose-invert max-w-none">
+                    <div>
+                        <h2>额外说明</h2>
+                        <p>你也可以在这个页面下方写一些关于项目来源、使用方式、创作理念的额外内容。</p>
+                    </div>
+                </Markdown>
+            </div>
         </div>
     </div>
 </MainGridLayout>
+
+<style>
+    /* 添加按钮旋转动画 */
+    .toggle-button svg {
+        transition: transform 0.2s ease;
+    }
+
+    /* 内容区域展开/折叠动画 */
+    .content-section {
+        transition: max-height 0.5s ease-in-out;
+        overflow: hidden;
+    }
+
+    /* details-content 动画 */
+    details .details-content {
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height 0.5s cubic-bezier(.4,0,.2,1), opacity 0.4s !important;
+    }
+    details[open] .details-content {
+        max-height: 3000px;
+        opacity: 1;
+        pointer-events: auto;
+        transition: max-height 0.5s cubic-bezier(.4,0,.2,1), opacity 0.4s !important;
+    }
+
+</style>

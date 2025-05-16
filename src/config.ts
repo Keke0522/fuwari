@@ -17,7 +17,7 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true, // 是否启用横幅
-		src: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/%E5%9C%A8%E5%B1%B1%E7%9A%84%E9%82%A3%E8%BE%B94K%E9%A3%8E%E6%99%AF%E5%A3%81%E7%BA%B83840x2160_%E5%BD%BC%E5%B2%B8%E5%9B%BE%E7%BD%91.jpg?imagevanblog", // 横幅图片的路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
+		src: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/fix-dir/keke/Downloads/2025/05/16/16-50-58-e8592fdbae5b47fdf43c25360c5050b4-%E5%88%9D%E9%9F%B3%E6%9C%AA%E6%9D%A5%20%E8%B5%8F%E6%9C%88%20%E6%98%9F%E7%A9%BA%204k%E5%A3%81%E7%BA%B8%203840_2160_%E5%BD%BC%E5%B2%B8%E5%9B%BE%E7%BD%91-bbb827.jpg?imagevanblog", // 横幅图片的路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
 		position: "center", // 横幅位置，对应 object-position 属性，只支持 'top', 'center', 'bottom'，默认为 'center'
 		credit: {
 			enable: true, // 是否显示横幅图片的版权信息
