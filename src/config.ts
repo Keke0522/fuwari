@@ -17,7 +17,7 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true, // 是否启用横幅
-		src: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/fix-dir/keke/Downloads/2025/05/16/16-50-58-e8592fdbae5b47fdf43c25360c5050b4-%E5%88%9D%E9%9F%B3%E6%9C%AA%E6%9D%A5%20%E8%B5%8F%E6%9C%88%20%E6%98%9F%E7%A9%BA%204k%E5%A3%81%E7%BA%B8%203840_2160_%E5%BD%BC%E5%B2%B8%E5%9B%BE%E7%BD%91-bbb827.jpg?imagevanblog", // 横幅图片的路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
+		src: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/fix-dir/keke/Downloads/2025/05/17/23-18-02-7ac8baa8153c69cf70e5387601aae71b-11-3a6179.jpg?imagevanblog", // 横幅图片的路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
 		position: "center", // 横幅位置，对应 object-position 属性，只支持 'top', 'center', 'bottom'，默认为 'center'
 		credit: {
 			enable: true, // 是否显示横幅图片的版权信息
@@ -56,7 +56,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png", // 头像路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
+	avatar: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/fix-dir/keke/Downloads/2025/05/17/23-25-40-d3ba7b5b0a03c3ea569fe3c69efbda87-22-2a83fc.jpg?imagevanblog", // 头像路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
 	name: "Ke.ke",
 	bio: "凡是过往，皆为序章.", // 个人简介
 	links: [
