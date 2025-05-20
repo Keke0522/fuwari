@@ -1,6 +1,6 @@
 ---
-import WidgetLayout from './WidgetLayout.astro'
 import APlayer from './APlayer.svelte'
+import { useState } from 'astro/jsx-runtime'
 
 const COLLAPSED_HEIGHT = '7.5rem'
 
@@ -10,11 +10,91 @@ interface Props {
 }
 const className = Astro.props.class
 const style = Astro.props.style
-
-const isCollapsed = false
 ---
-<WidgetLayout name="音乐" id="music" isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT} class={className} style={style}>
-    <div class="flex flex-col gap-1">
-        <APlayer client:only="svelte"/>
+
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>音乐播放器</title>
+    <style>
+        .loading-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            color: #666;
+            font-size: 14px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 4px solid #ccc;
+            border-top-color: #42b983;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #desktop-aplayer-wrapper {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="desktop-aplayer-wrapper" class="flex flex-col gap-1">
+    <div id="loading-wrapper" class="loading-wrapper">
+        <div class="spinner"></div>
+        <p>来点音乐吗...</p>
     </div>
-</WidgetLayout>
+
+    <div id="aplayer-container" class="fade-in" style="display: none;">
+        <APlayer client:only="svelte" />
+    </div>
+</div>
+
+<script>
+    if (window.innerWidth >= 768) {
+        // 桌面端：加载播放器
+        setTimeout(() => {
+            const loading = document.getElementById('loading-wrapper');
+            const aplayer = document.getElementById('aplayer-container');
+            if (loading && aplayer) {
+                loading.style.display = 'none';
+                aplayer.style.display = 'block';
+            }
+        }, 0); // 可设为 2000 延迟 2 秒
+    } else {
+        // 移动端：隐藏整个播放器容器（保险）
+        const wrapper = document.getElementById('desktop-aplayer-wrapper');
+        if (wrapper) {
+            wrapper.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
