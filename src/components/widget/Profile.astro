@@ -23,11 +23,38 @@ const config = profileConfig;
         <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div>
         <div class="text-center text-neutral-400 mb-2.5 transition">{config.bio}</div>
         <div class="flex gap-2 justify-center mb-1">
-            {config.links.length > 1 && config.links.map(item =>
-                    <a rel="me" aria-label={item.name} href={item.url} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90">
-                        <Icon name={item.icon} class="text-[1.5rem]"></Icon>
-                    </a>
-            )}
+            {config.links.length > 1 &&
+                config.links.map(item => {
+                    const isQRCode = item.name === 'WeChat' || item.name === 'QQ';
+                    return (
+                            <div class="relative group">
+                                <a
+                                        rel="me"
+                                        aria-label={item.name}
+                                        href={isQRCode ? '#' : item.url}
+                                        target={isQRCode ? '' : '_blank'}
+                                        class="btn-regular rounded-lg h-10 w-10 active:scale-90 flex items-center justify-center"
+                                >
+                                    <Icon name={item.icon} class="text-[1.5rem]" />
+                                </a>
+
+                                {/* 悬浮二维码弹出层 */}
+                                {isQRCode && (
+                                        <div class="absolute bottom-12 left-1/2 -translate-x-1/2
+              hidden group-hover:block z-50
+              bg-white border border-gray-300 rounded-md shadow-md
+              p-2 w-36 transition-all duration-300">
+                                            <img
+                                                    src={item.url}
+                                                    alt={`${item.name} QR Code`}
+                                                    class="w-32 h-32 object-cover"
+                                            />
+                                        </div>
+                                )}
+                            </div>
+                    );
+                })
+            }
             {config.links.length == 1 && <a rel="me" aria-label={config.links[0].name} href={config.links[0].url} target="_blank"
                                             class="btn-regular rounded-lg h-10 gap-2 px-3 font-bold active:scale-95">
                 <Icon name={config.links[0].icon} class="text-[1.5rem]"></Icon>

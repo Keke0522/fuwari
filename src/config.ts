@@ -17,10 +17,10 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true, // 是否启用横幅
-		src: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/fix-dir/keke/Downloads/2025/05/17/23-18-02-7ac8baa8153c69cf70e5387601aae71b-11-3a6179.jpg?imagevanblog", // 横幅图片的路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
+		src: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/wallhaven-e7x518.webp?imagevanblog", // 横幅图片的路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
 		position: "center", // 横幅位置，对应 object-position 属性，只支持 'top', 'center', 'bottom'，默认为 'center'
 		credit: {
-			enable: true, // 是否显示横幅图片的版权信息
+			enable: false, // 是否显示横幅图片的版权信息
 			text: "在山的那边", // 显示的版权文字
 			url: "https://pic.netbian.com/tupian/36636.html", // （可选）指向原始艺术作品或艺术家页面的 URL 链接
 		},
@@ -56,7 +56,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/fix-dir/keke/Downloads/2025/05/17/23-25-40-d3ba7b5b0a03c3ea569fe3c69efbda87-22-2a83fc.jpg?imagevanblog", // 头像路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
+	avatar: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/wallhaven-e7x518.webp?imagevanblog", // 头像路径，相对于 /src 目录，如果路径以 / 开头则相对于 /public 目录
 	name: "Ke.ke",
 	bio: "凡是过往，皆为序章.", // 个人简介
 	links: [
@@ -64,18 +64,24 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "WeChat",
 			icon: "fa6-brands:weixin",
-			url: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/weixinhaoyou.JPG?imagevanblog",
+			url: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/wxl.png?imagevanblog",
 		},
 		// QQ
 		{
 			name: "QQ",
 			icon: "fa6-brands:qq",
-			url: "https://qm.qq.com/q/smIYQggkWA",
+			url: "https://keke0420-1330580499.cos.ap-shanghai.myqcloud.com/img/IMG_1428.jpg?imagevanblog",
 		},
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
 			url: "https://github.com/Keke0522",
+		},
+		//网易云音乐
+		{
+			name: "网易云音乐",
+			icon: "simple-icons:neteasecloudmusic",
+			url: "https://music.163.com/playlist?id=726426312&uct2=U2FsdGVkX18Rx3WRfiF1ljtV7tTVZUhbDIt2W7JNKik=",
 		},
 	],
 };
