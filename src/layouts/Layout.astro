@@ -153,12 +153,27 @@ const bannerOffset =
 	>
 		<ConfigCarrier></ConfigCarrier>
 		<slot />
-
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 	</body>
+	<script src="/js/click-effect.js" type="module" />
+	<script src="https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0-rc.2/dist/autoload.js"></script>
 </html>
+<style is:global>
+	#waifu {
+		z-index: 9999 !important;
+	}
 
+	#waifu-tips {
+		width: 220px !important;
+	}
+
+
+	#live2d {
+		height: 250px !important;
+		width: 250px !important;
+	}
+</style>
 <style is:global define:vars={{
 	bannerOffset,
 	'banner-height-home': `${BANNER_HEIGHT_HOME}vh`,
