@@ -39,7 +39,7 @@ document.addEventListener("click", function (e) {
 });
 
 function playClickSound() {
-    const audio = new Audio("click.mp3");
+    const audio = new Audio("/mp3/pick-92276.mp3");
     audio.volume = 0.3; // 音量大小
     audio.play().catch(() => {}); // 兼容某些浏览器首次点击后才允许播放
 }

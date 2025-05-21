@@ -156,10 +156,22 @@ const bannerOffset =
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 	</body>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" is:inline></script>
+	<script is:inline>
+		if (window.innerWidth >= 768) { // 768px及以上一般视为桌面端
+			const loadScript = (src, isModule = false) => {
+				const script = document.createElement('script');
+				script.src = src;
+				if (isModule) script.type = 'module';
+				document.head.appendChild(script);
+			};
+			loadScript('https://code.jquery.com/jquery-3.6.0.min.js');
+			loadScript('/js/fishes.js');
+			loadScript('/js/autoload.js');
+		}
+	</script>
+
 	<script src="/js/click-effect.js" type="module" is:inline />
-	<script src="/js/autoload.js" is:inline></script>
-<script src="/js/fishes.js" is:inline></script></html>
+</html>
 <style is:global>
 	#waifu {
 		z-index: 9999 !important;
