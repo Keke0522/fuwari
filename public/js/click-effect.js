@@ -1,5 +1,5 @@
 document.addEventListener("click", function (e) {
-    const symbols = ["❤", "✨", "🌸", "💖", "🦋", "🎵", "💫", "🍀", "🌟", "🧸"];
+    const symbols = ["◇", "◆", "✦", "✧", "⟁", "⟡", "⧫", "⬣", "✴", "⛶"];
     const colors = ["#ff6b81", "#f368e0", "#ff9f43", "#48dbfb", "#1dd1a1", "#a29bfe"];
 
     const count = 12; // 每次爆炸数量

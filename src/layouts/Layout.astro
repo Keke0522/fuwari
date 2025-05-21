@@ -156,9 +156,10 @@ const bannerOffset =
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 	</body>
-	<script src="/js/click-effect.js" type="module" />
-	<script src="https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0-rc.2/dist/autoload.js"></script>
-</html>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" is:inline></script>
+	<script src="/js/click-effect.js" type="module" is:inline />
+	<script src="/js/autoload.js" is:inline></script>
+<script src="/js/fishes.js" is:inline></script></html>
 <style is:global>
 	#waifu {
 		z-index: 9999 !important;
@@ -167,7 +168,6 @@ const bannerOffset =
 	#waifu-tips {
 		width: 220px !important;
 	}
-
 
 	#live2d {
 		height: 250px !important;
