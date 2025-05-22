@@ -46,7 +46,7 @@ function loadExternalResource(url, type) {
     // tools: ['hitokoto', 'asteroids', 'switch-model', 'switch-texture', 'photo', 'info', 'quit'],
     tools: ['quit'],
     logLevel: 'warn',
-    drag: false,
+    drag: true,
   });
 })();
 
