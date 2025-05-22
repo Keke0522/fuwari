@@ -7,6 +7,7 @@ import TOC from './TOC.astro'
 import Series from './Series.astro'
 import APlayer from '@/components/APlayer/APlayer.vue'
 import Music from './Music.astro'
+import WidgetLayout from "./WidgetLayout.astro";
 
 interface Props {
     class? : string
@@ -29,7 +30,11 @@ const series = Astro.props.series
 
 
     <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4">
-        <Music></Music>
+        <WidgetLayout name="音乐" id="music">
+            <div class="w-full">
+                <Music></Music>
+            </div>
+        </WidgetLayout>
         <div id="series" class="flex flex-col w-full gap-4">
             { series && <Series series={ series }></Series> }
         </div>
