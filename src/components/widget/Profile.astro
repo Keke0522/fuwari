@@ -25,10 +25,11 @@ const config = profileConfig;
         <div class="flex gap-2 justify-center mb-1">
             {config.links.length > 1 &&
                 config.links.map(item => {
-                    const isQRCode = item.name === 'WeChat' || item.name === 'QQ';
+                    const isQRCode = item.name === 'WeChat';
                     return (
                             <div class="relative group">
                                 <a
+                                        id={item.name}
                                         rel="me"
                                         aria-label={item.name}
                                         href={isQRCode ? '#' : item.url}
