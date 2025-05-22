@@ -4,7 +4,7 @@ document.addEventListener("click", function (e) {
 
     const count = 12; // 每次爆炸数量
 
-    playClickSound();
+    // playClickSound();
 
     for (let i = 0; i < count; i++) {
         const particle = document.createElement("div");
