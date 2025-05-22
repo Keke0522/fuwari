@@ -44,7 +44,7 @@ function loadExternalResource(url, type) {
     cubism2Path: /js/ + 'live2d.min.js',
     cubism5Path: 'https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js',
     // tools: ['hitokoto', 'asteroids', 'switch-model', 'switch-texture', 'photo', 'info', 'quit'],
-    tools: [ 'quit'],
+    tools: ['quit'],
     logLevel: 'warn',
     drag: false,
   });
