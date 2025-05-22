@@ -47,11 +47,11 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Zuji,
 		LinkPreset.Zsk,
 		LinkPreset.About,
-		// {
-		// 	name: "GitHub",
-		// 	url: "https://github.com/saicaca/fuwari", // 内部链接不应包括基础路径，系统会自动添加
-		// 	external: true, // 显示外部链接图标，且会在新标签页中打开
-		// },
+		{
+			name: "GitHub",
+			url: "https://github.com/Keke0522", // 内部链接不应包括基础路径，系统会自动添加
+			external: true, // 显示外部链接图标，且会在新标签页中打开
+		},
 	],
 };
 

@@ -5,6 +5,7 @@
     let retryCount = 0;
     const MAX_RETRY = 3;
 
+
     function detectTheme() {
         return window.matchMedia?.('(prefers-color-scheme: dark)').matches
             ? '#222222'
